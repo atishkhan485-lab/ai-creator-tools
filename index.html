@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Creator Tools</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#070812;
+color:white;
+min-height:100vh;
+}
+.container{
+max-width:900px;
+margin:auto;
+padding:30px 18px 60px;
+}
+.logo{
+font-size:22px;
+font-weight:bold;
+margin-bottom:60px;
+}
+.logo span{
+color:#8b5cf6;
+}
+.hero{
+text-align:center;
+margin-bottom:35px;
+}
+h1{
+font-size:48px;
+margin:0 0 15px;
+}
+.gradient{
+background:linear-gradient(90deg,#a78bfa,#22d3ee);
+-webkit-background-clip:text;
+color:transparent;
+}
+.hero p{
+color:#a5a8b8;
+font-size:17px;
+line-height:1.6;
+}
+.card{
+background:#111323;
+border:1px solid #292d42;
+border-radius:22px;
+padding:25px;
+}
+label{
+display:block;
+font-size:14px;
+margin-bottom:8px;
+color:#c9cada;
+}
+input,select{
+width:100%;
+padding:14px;
+margin-bottom:18px;
+border-radius:12px;
+border:1px solid #30344b;
+background:#090b14;
+color:white;
+font-size:15px;
+}
+button{
+width:100%;
+padding:15px;
+border:0;
+border-radius:12px;
+background:linear-gradient(90deg,#7c3aed,#06b6d4);
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+.result{
+display:none;
+margin-top:25px;
+}
+.output{
+white-space:pre-wrap;
+background:#090b14;
+border:1px solid #30344b;
+border-radius:14px;
+padding:20px;
+line-height:1.7;
+color:#ddd;
+}
+.copy{
+margin-top:12px;
+background:#202438;
+}
+@media(max-width:600px){
+h1{font-size:36px}
+.container{padding-top:20px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+AI <span>Creator</span> Tools
+</div>
+
+<div class="hero">
+<h1>Create better <span class="gradient">YouTube scripts.</span></h1>
+<p>
+Turn your video idea into a professional YouTube script in seconds.
+</p>
+</div>
+
+<div class="card">
+
+<label>Video Topic</label>
+<input id="topic" placeholder="Example: GTA 5 Funny Moments">
+
+<label>Language</label>
+<select id="language">
+<option>English</option>
+<option>Urdu</option>
+<option>Roman Urdu</option>
+<option>Hindi</option>
+</select>
+
+<label>Video Length</label>
+<select id="length">
+<option>1 minute</option>
+<option>3 minutes</option>
+<option selected>5 minutes</option>
+<option>8 minutes</option>
+<option>10 minutes</option>
+</select>
+
+<label>Niche</label>
+<select id="niche">
+<option>Gaming</option>
+<option>Technology</option>
+<option>Education</option>
+<option>Facts</option>
+<option>Storytelling</option>
+<option>Entertainment</option>
+</select>
+
+<label>Tone</label>
+<select id="tone">
+<option>Modern</option>
+<option>Funny</option>
+<option>Professional</option>
+<option>Dramatic</option>
+<option>Energetic</option>
+</select>
+
+<button onclick="generateScript()">✨ Generate Script</button>
+
+<div class="result" id="result">
+
+<h2>Generated Script</h2>
+
+<div class="output" id="output"></div>
+
+<button class="copy" onclick="copyScript()">📋 Copy Script</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function generateScript(){
+
+let topic=document.getElementById("topic").value;
+
+let language=document.getElementById("language").value;
+
+let length=document.getElementById("length").value;
+
+let niche=document.getElementById("niche").value;
+
+let tone=document.getElementById("tone").value;
+
+if(topic===""){
+alert("Please enter a video topic.");
+return;
+}
+
+let script=
+"HOOK\n\n"+
+"Imagine discovering something amazing about "+topic+" that most people don't know!\n\n"+
+
+"INTRODUCTION\n\n"+
+"Welcome back to the channel! Today we're talking about "+topic+". "+
+"In this "+length+" "+niche+" video, we're going to explore the most interesting parts of this topic.\n\n"+
+
+"MAIN CONTENT\n\n"+
+"First, let's look at the most important part of "+topic+". "+
+"This is where things become really interesting.\n\n"+
+
+"Next, we'll explore some exciting details, useful information and memorable moments. "+
+"We'll keep everything "+tone.toLowerCase()+" and easy to understand.\n\n"+
+
+"ENDING\n\n"+
+"So, that's everything you need to know about "+topic+". "+
+"Let me know your thoughts in the comments below!\n\n"+
+
+"CALL TO ACTION\n\n"+
+"If you enjoyed this video, don't forget to Like, Subscribe and turn on notifications. "+
+"Thanks for watching and I'll see you in the next video!\n\n"+
+
+"Language: "+language;
+
+document.getElementById("output").innerText=script;
+
+document.getElementById("result").style.display="block";
+
+}
+
+function copyScript(){
+
+let text=document.getElementById("output").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Script copied!");
+
+}
+
+</script>
+
+</body>
+</html>
